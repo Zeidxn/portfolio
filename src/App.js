@@ -2,9 +2,9 @@ import './App.css';
 import styled, {ThemeProvider} from 'styled-components';
 import {darkTheme} from './utils/Themes';
 import NavBar from './components/NavBar';
-import Hero from './components/HeroSection';
+import Home from './components/Home';
 import Skills from './components/Skills';
-import Education from './components/Education';
+import Contact from './components/Contact';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 
@@ -36,10 +36,10 @@ function App() {
         <Router >
             <NavBar />
             <Body>
-                <Hero />
+                <Home />
                 <Wrapper>
                     <Skills />
-                    <Education />
+                    <Contact />
                 </Wrapper>
             </Body>
         </Router>

@@ -1,6 +1,8 @@
 import React from "react";
-import styled from "styled-components";
+import styled, {useTheme} from "styled-components";
 import {Link as LinkR} from 'react-router-dom';
+import {DiCssdeck} from 'react-icons/di';
+import {FaBars} from "react-icons/fa";
 
 const Nav = styled.nav`
     background: ${({theme}) => theme.card_light};
@@ -73,7 +75,7 @@ const NavLink = styled.a`
     cursor: pointer;
     text-decoration: none;
     transition: all 0.2s ease-in-out;
-    &hover{
+    &:hover{
         color: ${({theme}) => theme.primary};
     }
     `;
@@ -91,8 +93,11 @@ const ButtonContainer = styled.div`
     `;
 
 const GithubButton = styled.button`
-    border: 1px;
+    background-color: transparent ;
+    color: ${({theme}) => theme.primary};
+    border: 1.8px solid ${({theme}) => theme.primary};
     border-radius: 20px;
+    display: flex;
     justify-content: center;
     align-items: center;
     padding: 0px 20px;
@@ -100,31 +105,102 @@ const GithubButton = styled.button`
     font-weight: 500;
     cursor: pointer;
     height: 70%;
-    &hover {
+    &:hover {
         background-color: ${({theme}) => theme.primary};
-        color: ${({theme}) => theme.text_light};
+        color: ${({theme}) => theme.text_secondary};
     }
     
     @media screen and (max-width: 640px) {
         font-size: 0.8rem;
     }
 `;
-    
 
+const Span = styled.div`
+    padding: 0 4px;
+    font-weight: bold;
+    font-size: 18px;
+    color: #FFFFFF;
+    
+`;
+
+
+const MobileMenu = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    position: absolute;
+    top: 80px;
+    right: 0;
+    width: 100%;
+    padding: 12px 40px 24px 40px;
+    background: ${({ theme }) => theme.card_light+99};
+    transition: all 0.6s ease-in-out;
+    transform: ${({ open }) => (open ? 'translateY(0)' : 'translateY(-100%)')};
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    opacity: ${({ open }) => (open ? '1' : '0')};
+    z-index: ${({ open }) => (open ? '1' : '-1')};
+
+`;
+
+const MobileLink = styled.a`
+    color: ${({ theme }) => theme.text_primary};
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+        color: ${({ theme }) => theme.primary};
+    
+    }
+`;
 
 const NavBar = () => {
+    const [open, setOpen] = React.useState(false);
+    const theme = useTheme();
     return (
     <Nav>
         <NavContainer>
-            <NavLogo >Logo</NavLogo>
-            <MobileIcon></MobileIcon>
-                <NavItems>
-                    <NavLink>Home</NavLink>
+            <NavLogo to="/"><a>
+                 <Span>Nicolas Toupin</Span>
+            </a>
+            </NavLogo>
+            <MobileIcon>
+                <FaBars onClick={() => {
+                    setOpen(!open)}
+                } />
+            </MobileIcon>
+            <NavItems>
+                <NavLink href="#about">A Propos</NavLink>
+                <NavLink href="#skills">Skills</NavLink>
+                <NavLink href="#project">Projets</NavLink>
+                <NavLink href="#contact">Contact</NavLink>
                 </NavItems>
                 <ButtonContainer>
                     <GithubButton>Github Profile</GithubButton>
                 </ButtonContainer>
         </NavContainer>
+        {
+            open && (
+                <MobileMenu open={open}>
+                    <MobileLink href="#about" onClick={() => {
+                        setOpen(!open)
+                    }}>About</MobileLink>
+                    <MobileLink href='#skills' onClick={() => {
+                        setOpen(!open)
+                    }}>Skills</MobileLink>
+                    <MobileLink href='#projects' onClick={() => {
+                        setOpen(!open)
+                    }}>Projects</MobileLink>
+                    <MobileLink href='#contact' onClick={() => {
+                        setOpen(!open)
+                    }}>Contact</MobileLink>
+                    <GithubButton style={{padding: '10px 16px',background: `${theme.primary}`, color: 'white',width: 'max-content'}} href="/" target="_blank">Github Profile</GithubButton>
+                </MobileMenu>
+            )
+        }
                
     </Nav>
         );
