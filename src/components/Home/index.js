@@ -1,6 +1,6 @@
 import React from "react";
 import { Bio } from "../../data/constants";
-import HomeImg from "../../assets/img/me.jpg";
+import HomeImg from "../../assets/img/me2.jpg";
 import "./home.css";
 
 const Home = () => {

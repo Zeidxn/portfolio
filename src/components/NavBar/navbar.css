@@ -1,5 +1,5 @@
 .nav {
-    background: #191924;
+    background: #0e0e33;
     height: 80px;
     display: flex;
     justify-content: center;
@@ -64,7 +64,7 @@
 }
 
 .nav-link:hover {
-    color: #854CE6;
+    color: #1894ec;
 }
 
 .button-container {
@@ -78,8 +78,8 @@
 
 .github-button {
     background-color: transparent;
-    color: #854CE6;
-    border: 1.8px solid #854CE6;
+    color: #1894ec;
+    border: 1.8px solid #1894ec;
     text-decoration: none;
     border-radius: 20px;
     display: flex;
@@ -93,7 +93,7 @@
 }
 
 .github-button:hover {
-    background-color: #854CE6;
+    background-color: #1894ec;
     color: #b1b2b3;
 }
 
