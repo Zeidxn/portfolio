@@ -7,7 +7,6 @@ const Skills = () => {
         <div className="container" id="skills">
             <div className="wrapper">
                 <div className="title">Skills</div>
-                <div className="desc">Here are some of my skills on which I have been working on for the past 2 years.</div>
                 <div className="skills-container">
                     {skills.map((skill, index) => (
                         <div className="skill" key={index}>
